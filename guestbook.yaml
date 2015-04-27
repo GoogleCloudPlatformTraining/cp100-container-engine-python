@@ -12,6 +12,6 @@ desiredState:
           - containerPort: 80
             hostPort: 80
       - name: redis
-        image: dockerfile/redis
+        image: redis
         ports:
           - containerPort: 6379
