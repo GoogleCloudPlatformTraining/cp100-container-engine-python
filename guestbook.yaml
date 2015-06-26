@@ -1,17 +1,24 @@
-apiVersion: v1beta1
-kind: Pod
-id: redis-guestbook
-desiredState:
-  manifest:
-    version: v1beta1
-    id: redis-guestbook
-    containers:
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: guestbook
+  labels:
+    name: guestbook
+spec:
+  replicas: 1
+  selector:
+    name: guestbook
+  template:
+    metadata:
+      labels:
+        name: guestbook
+    spec:
+      containers:
       - name: python-guestbook
         image: google/guestbook-python-redis
         ports:
-          - containerPort: 80
-            hostPort: 80
+        - containerPort: 80
       - name: redis
         image: redis
         ports:
-          - containerPort: 6379
+        - containerPort: 6379
