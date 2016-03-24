@@ -18,7 +18,21 @@ spec:
         image: google/guestbook-python-redis
         ports:
         - containerPort: 80
+        resources:
+          requests:
+            memory: ".5Gi"
+            cpu: "25m"
+          limits:
+            memory: "1Gi"
+            cpu: "50m"
       - name: redis
         image: redis
         ports:
         - containerPort: 6379
+        resources:
+          requests:
+            memory: ".5Gi"
+            cpu: "25m"
+          limits:
+            memory: "1Gi"
+            cpu: "50m"
